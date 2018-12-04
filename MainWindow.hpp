@@ -28,15 +28,27 @@ protected:
     QString player2Name_;
     QColor player1Color_;
     QColor player2Color_;
+    QPixmap player1Pixmap_;
+    QPixmap player2Pixmap_;
     bool gameStarted_;
-    bool player1Turn;
-    QGraphicsScene *scene;
+    bool player1Turn_;
+    bool gameFinished_;
+    QGraphicsScene *scene_;
+    std::vector<QGraphicsEllipseItem*> ellipses_;
 
 protected:
     void initGameField();
     void resetGameField();
+
+    void startGame();
+    void makeMove(int x);
+
     void changePlayerTurn();
     void setPlayerLabels();
+    void setGameFinish();
+
+    bool isGameFinished();
+    void checkWhoWins();
 
 public:
     explicit MainWindow(QWidget *parent = 0);
