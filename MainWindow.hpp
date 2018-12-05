@@ -5,11 +5,16 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QGraphicsView>
+#include <QTimer>
+
+//std
+#include <vector>
 
 // connected four
 #include "common.hpp"
 #include "PlayerMenu.hpp"
 #include "GameSquare.hpp"
+#include "Disc.hpp"
 
 namespace Ui {
 class MainWindow;
@@ -19,10 +24,11 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 protected:
+    Ui::MainWindow *ui;
     enum FieldType {Player1, Player2, Empty};
+    enum Winner {Nobody, Player1Wins, Player2Wins};
 
     FieldType gameField[gameBoardWidth][gameBoardHeight];
-    GameSquare* gameSquare[gameBoardWidth][gameBoardHeight];
 
     QString player1Name_;
     QString player2Name_;
@@ -34,7 +40,7 @@ protected:
     bool player1Turn_;
     bool gameFinished_;
     QGraphicsScene *scene_;
-    std::vector<QGraphicsEllipseItem*> ellipses_;
+    std::vector<QTimer*> timers_;
 
 protected:
     void initGameField();
@@ -42,13 +48,14 @@ protected:
 
     void startGame();
     void makeMove(int x);
+    void finishGame();
 
     void changePlayerTurn();
     void setPlayerLabels();
     void setGameFinish();
 
     bool isGameFinished();
-    void checkWhoWins();
+    int checkWhoWins();
 
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -61,9 +68,8 @@ private slots:
     void on_actionContact_triggered();
 
     void gameFieldClickedPosition(int x);
+    void animationHaveFinish();
 
-private:
-    Ui::MainWindow *ui;
 };
 
 #endif // MAINWINDOW_HPP

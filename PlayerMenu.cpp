@@ -1,31 +1,33 @@
 #include "PlayerMenu.hpp"
 #include "ui_PlayerMenu.h"
 
-PlayerMenu::PlayerMenu(QWidget *parent) :
-    QDialog(parent),
+PlayerMenu::PlayerMenu(QString player1Name, QString player2Name, QColor player1Color, QColor player2Color, QWidget *parent)
+    :QDialog(parent),
     ui(new Ui::PlayerMenu)
 {
     ui->setupUi(this);
 
-
     ui->player1Label->setText("Player 1");
     ui->player1NameLabel->setText("Name:");
-    ui->player1Name->setText("Jake");
+    ui->player1Name->setText(player1Name);
     ui->player1ColorLabel->setText("Color:");
     player1Pixmap_ = QPixmap(pixMapWidth, pixMapHeight);
-    player1Pixmap_.fill(QColor("red"));
-    player1Color_ = QColor("red");
+    player1Pixmap_.fill(QColor(player1Color));
+    player1Color_ = player1Color;
     ui->player1Color->setPixmap(player1Pixmap_);
 
     ui->player2Label->setText("Player 2");
     ui->player2NameLabel->setText("Name:");
-    ui->player2Name->setText("Elwood");
+    ui->player2Name->setText(player2Name);
     ui->player2ColorLabel->setText("Color:");
     player2Pixmap_ = QPixmap(pixMapWidth, pixMapHeight);
-    player2Pixmap_.fill(QColor("yellow"));
-    player2Color_ = QColor("yellow");
+    player2Pixmap_.fill(player2Color);
+    player2Color_ = player2Color;
     ui->player2Color->setPixmap(player2Pixmap_);
 
+
+    QObject::connect( ui->player1Name, &QLineEdit::textChanged, this, &PlayerMenu::on_textChanged);
+    QObject::connect( ui->player2Name, &QLineEdit::textChanged, this, &PlayerMenu::on_textChanged);
 }
 
 QColor PlayerMenu::getPlayer1Color(){
@@ -59,7 +61,7 @@ void PlayerMenu::on_player2Color_clicked()
     if(qColorDialog_.result() == QDialog::Accepted){
         QColor selectedColor = qColorDialog_.selectedColor();
 
-        if(selectedColor != player1Color_ && selectedColor != QColor("blue")){
+        if(selectedColor != player1Color_ && selectedColor != QColor("blue") && selectedColor != QColor("lightGray")){
                 player2Color_ = selectedColor;
                 player2Pixmap_.fill(player2Color_);
                 ui->player2Color->setPixmap(player2Pixmap_);
@@ -76,10 +78,20 @@ void PlayerMenu::on_player1Color_clicked()
     if(qColorDialog_.result() == QDialog::Accepted){
         QColor selectedColor = qColorDialog_.selectedColor();
 
-        if(selectedColor != player2Color_ && selectedColor != QColor("blue")){
+        if(selectedColor != player2Color_ && selectedColor != QColor("blue") && selectedColor != QColor("lightGray")){
             player1Color_ = selectedColor;
             player1Pixmap_.fill(player1Color_);
             ui->player1Color->setPixmap(player1Pixmap_);
         }
     }
+}
+
+void PlayerMenu::on_textChanged()
+{
+    //ui->buttonBox->setEnabled(!ui->player1Name->text().isEmpty() || !ui->player1Name->text().isEmpty());
+
+
+    QList<QAbstractButton*> buttonsList = ui->buttonBox->buttons();
+
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!ui->player1Name->text().isEmpty() | !ui->player1Name->text().isEmpty());
 }

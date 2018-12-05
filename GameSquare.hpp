@@ -6,19 +6,17 @@
 #include<QGraphicsItem>
 #include<QPainterPath>
 
+// connected four
+#include "common.hpp"
+
 class GameSquare : public QGraphicsItem
 {
 protected:
-    float x_;
-    float y_;
     float sideLength_;
-    float ellipseProcent;
-    QGraphicsRectItem* square_;
-    QGraphicsEllipseItem* ellipse_;
     QBrush brush;
 
 public:
-    GameSquare(float x, float y, float sideLength, float ellipseProcent);
+    GameSquare(float sideLength);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;
 };

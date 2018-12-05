@@ -1,26 +1,26 @@
 #include "GameSquare.hpp"
 
 
-GameSquare::GameSquare(float x, float y, float sideLength, float ellipseProcent)
-    :x_(x), y_(y), sideLength_(sideLength), ellipseProcent(ellipseProcent)
+GameSquare::GameSquare(float sideLength)
+    :sideLength_(sideLength)
 {
     brush = QBrush(QColor("blue"));
 }
 
 
 QRectF GameSquare::boundingRect() const{
-    return QRectF(x_, y_, sideLength_, sideLength_);
+    return QRectF(0, 0, sideLength_, sideLength_);
 }
 
 void GameSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
     QPainterPath gameSquarePath;
     QRectF rec = boundingRect();
-    QRectF recEllipse(x_+ ellipseProcent*0.5*sideLength_,
-                      y_+ ellipseProcent*0.5*sideLength_,
-                      sideLength_ -ellipseProcent*sideLength_,
-                      sideLength_-ellipseProcent*sideLength_);
+    QRectF recEllipse(  0 + gameSquareEllipseProcent/2*sideLength_,
+                        0 + gameSquareEllipseProcent/2*sideLength_,
+                        sideLength_ - gameSquareEllipseProcent*sideLength_,
+                        sideLength_ - gameSquareEllipseProcent*sideLength_);
 
-    gameSquarePath.moveTo(x_-sideLength_/2, y_+sideLength_/2);
+    gameSquarePath.moveTo(0, 0);
     gameSquarePath.addRect(rec);
     gameSquarePath.addEllipse(recEllipse);
 

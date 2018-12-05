@@ -6,6 +6,7 @@
 #include <QPixmap>
 #include <QMessageBox>
 #include <QColorDialog>
+#include <QPushButton>
 
 // connected four
 #include "common.hpp"
@@ -24,7 +25,7 @@ protected:
     QColor player2Color_;
 
 public:
-    explicit PlayerMenu(QWidget *parent = 0);
+    explicit PlayerMenu(QString player1Name, QString player2Name, QColor player1Color, QColor player2Color, QWidget *parent = 0);
     QColor getPlayer1Color();
     QColor getPlayer2Color();
     QString getPlayer1Name();
@@ -35,6 +36,8 @@ private slots:
     void on_player2Color_clicked();
 
     void on_player1Color_clicked();
+
+    void on_textChanged();
 
 private:
     Ui::PlayerMenu *ui;

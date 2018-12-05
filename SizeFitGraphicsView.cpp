@@ -1,17 +1,17 @@
 #include "SizeFitGraphicsView.hpp"
 
-
-
 SizeFitGraphicsView::SizeFitGraphicsView(QWidget *parent)
     :QGraphicsView(parent)
 {}
 
 void SizeFitGraphicsView::resizeEvent(QResizeEvent *event){
-    this->fitInView(QRect(0, 0, this->sceneRect().width(), this->sceneRect().height()));
+    this->fitInView(this->sceneRect(), Qt::KeepAspectRatio);
 }
 
 void SizeFitGraphicsView::mousePressEvent(QMouseEvent *event)
 {
-    int x = event->x();
-    emit graphicsViewClicked(x);
+    auto p = mapToScene(event->pos());
+    int x = p.x();
+    if(x>=0)
+        emit graphicsViewClicked(x);
 }

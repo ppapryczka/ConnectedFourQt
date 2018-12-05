@@ -18,14 +18,16 @@ SOURCES += main.cpp\
     PlayerMenu.cpp \
     ClickableLabel.cpp \
     GameSquare.cpp \
-    SizeFitGraphicsView.cpp
+    SizeFitGraphicsView.cpp \
+    Disc.cpp
 
 HEADERS  += MainWindow.hpp \
     PlayerMenu.hpp \
     ClickableLabel.hpp \
     GameSquare.hpp \
     SizeFitGraphicsView.hpp \
-    common.hpp
+    common.hpp \
+    Disc.hpp
 
 FORMS    += MainWindow.ui \
     PlayerMenu.ui
