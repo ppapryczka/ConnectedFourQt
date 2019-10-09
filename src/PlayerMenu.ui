@@ -163,7 +163,7 @@
   <customwidget>
    <class>ClickableLabel</class>
    <extends>QLabel</extends>
-   <header location="global">ClickableLabel.hpp</header>
+   <header>ClickableLabel.hpp</header>
    <slots>
     <signal>clicked()</signal>
    </slots>
