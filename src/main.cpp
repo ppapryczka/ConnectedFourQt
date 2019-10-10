@@ -3,10 +3,10 @@
 
 int main(int argc, char *argv[])
 {
-    qsrand(time(NULL));
+    qsrand(time(0));
     QApplication a(argc, argv);
-    MainWindow w;
-    w.show();
+    MainWindow gameWindow;
+    gameWindow.show();
 
     return a.exec();
 }

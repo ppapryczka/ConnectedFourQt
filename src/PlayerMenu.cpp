@@ -11,7 +11,7 @@ PlayerMenu::PlayerMenu(QString player1Name, QString player2Name, QColor player1C
     ui->player1NameLabel->setText("Name:");
     ui->player1Name->setText(player1Name);
     ui->player1ColorLabel->setText("Color:");
-    player1Pixmap_ = QPixmap(pixMapWidth, pixMapHeight);
+    player1Pixmap_ = QPixmap(PLAYER_COLOR_LABEL_WIDTH, PLAYER_COLOR_LABEL_HEIGHT);
     player1Pixmap_.fill(QColor(player1Color));
     player1Color_ = player1Color;
     ui->player1Color->setPixmap(player1Pixmap_);
@@ -20,7 +20,7 @@ PlayerMenu::PlayerMenu(QString player1Name, QString player2Name, QColor player1C
     ui->player2NameLabel->setText("Name:");
     ui->player2Name->setText(player2Name);
     ui->player2ColorLabel->setText("Color:");
-    player2Pixmap_ = QPixmap(pixMapWidth, pixMapHeight);
+    player2Pixmap_ = QPixmap(PLAYER_COLOR_LABEL_WIDTH, PLAYER_COLOR_LABEL_HEIGHT);
     player2Pixmap_.fill(player2Color);
     player2Color_ = player2Color;
     ui->player2Color->setPixmap(player2Pixmap_);

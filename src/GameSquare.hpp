@@ -12,11 +12,10 @@
 class GameSquare : public QGraphicsItem
 {
 protected:
-    float sideLength_;
-    QBrush brush;
+    double sideLength_;
 
 public:
-    GameSquare(float sideLength);
+    GameSquare(double sideLength);
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     QRectF boundingRect() const;
 };

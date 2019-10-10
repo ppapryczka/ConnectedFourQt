@@ -18,7 +18,7 @@ protected:
     void mousePressEvent(QMouseEvent *event);
 
 signals:
-    void graphicsViewClicked(int x);
+    void graphicsViewClicked(double x);
 };
 
 #endif // SIZEFITGRAPHICSVIEW_H

@@ -7,7 +7,7 @@
 #include <QGraphicsView>
 #include <QTimer>
 
-//std
+// std
 #include <vector>
 
 // connected four
@@ -22,13 +22,20 @@ class MainWindow;
 
 class MainWindow : public QMainWindow
 {
+    /*
+     *
+     *
+     */
+
     Q_OBJECT
+
 protected:
-    Ui::MainWindow *ui;
+    // ui 
+    Ui::MainWindow *ui_;
     enum FieldType {Player1, Player2, Empty};
     enum Winner {Nobody, Player1Wins, Player2Wins};
 
-    FieldType gameField[gameBoardWidth][gameBoardHeight];
+    FieldType gameField[GAME_BOARD_WIDTH][GAME_BOARD_HEIGHT];
 
     QString player1Name_;
     QString player2Name_;
@@ -58,7 +65,7 @@ protected:
     int checkWhoWins();
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:

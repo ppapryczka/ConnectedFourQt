@@ -11,7 +11,7 @@ void SizeFitGraphicsView::resizeEvent(QResizeEvent *event){
 void SizeFitGraphicsView::mousePressEvent(QMouseEvent *event)
 {
     auto p = mapToScene(event->pos());
-    int x = p.x();
+    double x = p.x();
     if(x>=0)
         emit graphicsViewClicked(x);
 }
