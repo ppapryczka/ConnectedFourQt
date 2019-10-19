@@ -21,4 +21,4 @@ signals:
     void graphicsViewClicked(double x);
 };
 
-#endif // SIZEFITGRAPHICSVIEW_H
+#endif // SIZEFITGRAPHICSVIEW_HPP

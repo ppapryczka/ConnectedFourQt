@@ -43,6 +43,7 @@ protected:
     QColor player2Color_;
     QPixmap player1Pixmap_;
     QPixmap player2Pixmap_;
+    QPixmap transparentPixmap_;
     bool gameStarted_;
     bool player1Turn_;
     bool gameFinished_;

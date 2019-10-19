@@ -47,13 +47,11 @@ QString PlayerMenu::getPlayer2Name(){
 }
 
 
-PlayerMenu::~PlayerMenu()
-{
+PlayerMenu::~PlayerMenu(){
     delete ui;
 }
 
-void PlayerMenu::on_player2Color_clicked()
-{
+void PlayerMenu::on_player2Color_clicked(){
     QColorDialog qColorDialog_;
     qColorDialog_.setModal(true);
     qColorDialog_.exec();
@@ -69,8 +67,7 @@ void PlayerMenu::on_player2Color_clicked()
     }
 }
 
-void PlayerMenu::on_player1Color_clicked()
-{
+void PlayerMenu::on_player1Color_clicked(){
     QColorDialog qColorDialog_;
     qColorDialog_.setModal(true);
     qColorDialog_.exec();
@@ -86,12 +83,6 @@ void PlayerMenu::on_player1Color_clicked()
     }
 }
 
-void PlayerMenu::on_textChanged()
-{
-    //ui->buttonBox->setEnabled(!ui->player1Name->text().isEmpty() || !ui->player1Name->text().isEmpty());
-
-
-    QList<QAbstractButton*> buttonsList = ui->buttonBox->buttons();
-
-    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!ui->player1Name->text().isEmpty() | !ui->player1Name->text().isEmpty());
+void PlayerMenu::on_textChanged(){
+    ui->buttonBox->button(QDialogButtonBox::Ok)->setEnabled(!ui->player1Name->text().isEmpty() | !ui->player2Name->text().isEmpty());
 }

@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui_->graphicsView->setRenderHint(QPainter::Antialiasing);
     ui_->colorMessage->setText("");
 
+    transparentPixmap_= QPixmap(PLAYER_COLOR_LABEL_WIDTH, PLAYER_COLOR_LABEL_WIDTH);
+    transparentPixmap_.fill(QColor("transparent"));
+
     this->setMinimumSize(INIT_WINDOW_WIDTH, INIT_WINDOW_HEIGHT);
     initGameField();
 
@@ -49,6 +52,8 @@ void MainWindow::initGameField(){
 
     ui_->graphicsView->setScene(scene_);
     ui_->graphicsView->setBackgroundBrush(BACKGROUND_BRUSH);
+
+    ui_->colorMessage->setPixmap(transparentPixmap_);
 }
 
 
@@ -317,8 +322,7 @@ void MainWindow::animationHaveFinish(){
         }
 
         ui_->message->setText(START_GAME_MSG);
-        ui_->colorMessage->setPixmap(QPixmap(0,0));
-
+        ui_->colorMessage->setPixmap(transparentPixmap_);
     }
 }
 

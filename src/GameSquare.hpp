@@ -20,4 +20,4 @@ public:
     QRectF boundingRect() const;
 };
 
-#endif // GAMESQUARE_H
+#endif // GAMESQUARE_HPP
